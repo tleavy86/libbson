@@ -73,3 +73,9 @@ AC_ARG_ENABLE([yelp],
                               [Install yelp manuals.])],
               [],
               [enable_yelp=no])
+
+AC_ARG_ENABLE([glib],
+              [AS_HELP_STRING([--enable-glib=@<:@yes/no@:>@],
+                              [Build GLib bindings.])],
+              [],
+              [enable_glib=no])

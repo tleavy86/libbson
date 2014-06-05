@@ -41,3 +41,8 @@ if test "$bson_cv_need_braces_on_pthread_once_init" = yes; then
               [PTHREAD_ONCE_INIT needs braces])
 fi
 AC_SUBST([BSON_PTHREAD_ONCE_INIT_NEEDS_BRACES])
+
+
+# Check for GObject 2.0 >= 2.30 for glib integration bindings.
+PKG_CHECK_MODULES(GLIB, [gobject-introspection-1.0 >= 1.40], [have_glib=yes], [have_glib=no])
+GOBJECT_INTROSPECTION_CHECK([1.30.0])

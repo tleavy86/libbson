@@ -138,12 +138,16 @@
 #endif
 
 
-#define BSON_STATIC_ASSERT(s) BSON_STATIC_ASSERT_ (s, __LINE__)
-#define BSON_STATIC_ASSERT_JOIN(a, b) BSON_STATIC_ASSERT_JOIN2 (a, b)
-#define BSON_STATIC_ASSERT_JOIN2(a, b) a##b
-#define BSON_STATIC_ASSERT_(s, l) \
+#ifndef BSON_DISABLE_ASSERT
+# define BSON_STATIC_ASSERT(s) BSON_STATIC_ASSERT_ (s, __LINE__)
+# define BSON_STATIC_ASSERT_JOIN(a, b) BSON_STATIC_ASSERT_JOIN2 (a, b)
+# define BSON_STATIC_ASSERT_JOIN2(a, b) a##b
+# define BSON_STATIC_ASSERT_(s, l) \
    typedef char BSON_STATIC_ASSERT_JOIN (static_assert_test_, \
-                                         __LINE__)[(s) ? 1 : -1]
+                                         __LINE__)[(s) ? 1 : -1];
+#else
+# define BSON_STATIC_ASSERT(s)
+#endif
 
 
 #if defined(__GNUC__)

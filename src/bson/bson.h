@@ -266,10 +266,10 @@ bson_new_from_data (const uint8_t *data,
 
 /**
  * bson_new_from_buffer:
- * @buf: A pointer to a buffer containing a serialized bson document.  Or null
- * @buf_len: The length of the buffer in bytes.
- * @realloc_fun: a realloc like function
- * @realloc_fun_ctx: a context for the realloc function
+ * @buf: (inout): A pointer to a buffer containing a serialized bson document, or null
+ * @buf_len: (inout): The length of the buffer in bytes.
+ * @realloc_func: a realloc like function
+ * @realloc_func_ctx: a context for the realloc function
  *
  * Creates a new bson_t structure using the data provided. @buf should contain
  * a bson document, or null pointer should be passed for new allocations.
@@ -443,7 +443,7 @@ bson_equal (const bson_t *bson,
 /**
  * bson_validate:
  * @bson: A bson_t.
- * @offset: A location for the error offset.
+ * @offset: (out): A location for the error offset.
  *
  * Validates a BSON document by walking through the document and inspecting
  * the fields for valid content.
@@ -459,7 +459,7 @@ bson_validate (const bson_t         *bson,
 /**
  * bson_as_json:
  * @bson: A bson_t.
- * @length: A location for the string length, or NULL.
+ * @length: (out): A location for the string length, or NULL.
  *
  * Creates a new string containing @bson in extended JSON format. The caller
  * is responsible for freeing the resulting string. If @length is non-NULL,
@@ -536,7 +536,7 @@ bool
 bson_append_bool (bson_t     *bson,
                   const char *key,
                   int         key_length,
-                  bool value);
+                  bool        value);
 
 
 /**
@@ -723,10 +723,10 @@ bson_append_array_end (bson_t *bson,
  * Returns: true if successful; false if append would overflow max size.
  */
 bool
-bson_append_int32 (bson_t      *bson,
-                   const char  *key,
-                   int          key_length,
-                   int32_t value);
+bson_append_int32 (bson_t     *bson,
+                   const char *key,
+                   int         key_length,
+                   int32_t     value);
 
 
 /**
@@ -740,10 +740,10 @@ bson_append_int32 (bson_t      *bson,
  * Returns: true if successful; false if append would overflow max size.
  */
 bool
-bson_append_int64 (bson_t      *bson,
-                   const char  *key,
-                   int          key_length,
-                   int64_t value);
+bson_append_int64 (bson_t     *bson,
+                   const char *key,
+                   int         key_length,
+                   int64_t     value);
 
 
 /**
@@ -958,10 +958,10 @@ bson_append_timeval (bson_t         *bson,
  * Returns: true if sucessful; otherwise false.
  */
 bool
-bson_append_date_time (bson_t      *bson,
-                       const char  *key,
-                       int          key_length,
-                       int64_t value);
+bson_append_date_time (bson_t     *bson,
+                       const char *key,
+                       int         key_length,
+                       int64_t     value);
 
 
 /**
@@ -997,11 +997,11 @@ bson_append_now_utc (bson_t     *bson,
  * Returns: true if successful; false if append would overflow max size.
  */
 bool
-bson_append_timestamp (bson_t       *bson,
-                       const char   *key,
-                       int           key_length,
-                       uint32_t timestamp,
-                       uint32_t increment);
+bson_append_timestamp (bson_t     *bson,
+                       const char *key,
+                       int         key_length,
+                       uint32_t    timestamp,
+                       uint32_t    increment);
 
 
 /**

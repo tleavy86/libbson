@@ -142,7 +142,7 @@ BSON_ALIGNED_END (128);
 #define BSON_INITIALIZER { 3, 5, { 5 } }
 
 
-BSON_STATIC_ASSERT (sizeof (bson_t) == 128);
+BSON_STATIC_ASSERT (sizeof (bson_t) == 128)
 
 
 /**
@@ -158,7 +158,7 @@ typedef struct
 } bson_oid_t;
 
 
-BSON_STATIC_ASSERT (sizeof (bson_oid_t) == 12);
+BSON_STATIC_ASSERT (sizeof (bson_oid_t) == 12)
 
 
 /**
@@ -474,7 +474,7 @@ typedef struct
 } bson_error_t;
 
 
-BSON_STATIC_ASSERT (sizeof (bson_error_t) == 512);
+BSON_STATIC_ASSERT (sizeof (bson_error_t) == 512)
 
 
 /**
