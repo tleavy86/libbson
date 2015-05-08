@@ -45,7 +45,7 @@ libbson_variables:
         j_flag: -j$(sysctl -n hw.logicalcpu)
 
     solaris_expansions_def: &solaris_expansions
-        j_flag: -j$(kstat cpu | sort -u | grep -c "^module")
+        j_flag: -j$(kstat cpu_info|grep core_id|sort -u|wc -l)
 
     mingw_expansions_def: &mingw_expansions
         j_flag: -j$(grep -c ^processor /proc/cpuinfo)
